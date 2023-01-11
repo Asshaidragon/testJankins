@@ -14,7 +14,7 @@ pipeline {
         stage('Build') {
             steps {
                 echo "================ start building images ================"
-                sh 'docker build -f build/Dockerfile .'
+                    sh 'docker build -t debug_test_jan -f build/Dockerfile .'
             }
         }
     }
