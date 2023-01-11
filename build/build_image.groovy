@@ -14,7 +14,13 @@ pipeline {
         stage('Build') {
             steps {
                 echo "================ start building images ================"
-                    sh 'docker build -t debug_test_jan -f build/Dockerfile .'
+                    sh 'docker build -t jenkins_build_test -f build/Dockerfile .'
+            }
+        }
+        stage('Run test') {
+            steps {
+                echo "================ Run tests ================"
+                    sh 'docker run --rm jenkins_build_test pytest test/'
             }
         }
     }
